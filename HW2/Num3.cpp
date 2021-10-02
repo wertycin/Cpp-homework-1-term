@@ -5,6 +5,7 @@ int main()
 {
 	std::vector <int> array;
 	int n, element, key, midd = 0, left = 0, right;
+	bool flag = false;
  
 	std::cout << "Enter number of elements in your array. \n";
 	std::cin >> n;
@@ -22,29 +23,32 @@ int main()
 	std::cout << "Enter your key. \n";
 	std::cin >> key;
  
-	while (1)
+	while (left <= right && flag == false)
 	{
-		if (left > right)
-		{
-			std::cout << "There is no key in array.";
-			break;
-		}
- 
 		midd = (left + right) / 2;
  
 		if (key < array[midd]) 
 		{      
 			right = midd - 1;     
 		}
-		else if (key > array[midd]) 
-		{ 
-			left = midd + 1;    
-		}
 		else 
-		{        
-			std::cout << "Your key is found in array.";
-			break;
+		{ 
+			left = midd + 1;
 		}
+		if (key == array[midd])
+		{        
+			flag = true;
+		}
+	}
+ 
+	if (flag == true)
+	{
+		std::cout << "Your key is found in the array.";
+	}
+ 
+	else
+	{
+		std::cout << "There is no key in the array.";
 	}
  
 	return 0;
