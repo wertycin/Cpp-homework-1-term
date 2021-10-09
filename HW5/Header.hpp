@@ -5,6 +5,7 @@
 #include <string>
 #include <cmath>
 
+//num1
 class User
 {
 public:
@@ -24,7 +25,7 @@ private:
 	std::vector <std::string> team;
 };
 
-
+//num2
 class Energy
 {
 public:
@@ -67,6 +68,35 @@ private:
 	static inline const double j_ev = 10e19 / (1, 6);
 };
 
+//num3
+class Client
+{
+private:
+	void super(char a);
+	void great(std::string b);
+	void bad(double c);
+
+	friend class Attorney;
+};
+
+class Attorney 
+{
+private:
+	static void callA(Client& c, char a) 
+	{
+		c.super(a);
+	}
+	static void callB(Client& c, std::string b) 
+	{
+		c.great(b);
+	}
+	friend class Bar;
+};
+
+class Bar 
+{
+	// Bar имеет доступ только к Client::super and Client::great через Attorney.
+};
 
 
 int num1();
