@@ -28,28 +28,48 @@ private:
 class Energy
 {
 public:
-	Energy(double value, std::string flag) : value(value), flag(flag)
-	{}
 	Energy()
 	{}
-
-	const std::vector <double> convertation()
+	
+	void set_joules(double value_j)
 	{
-		flag == "j" ? value_j = value, value_erg = value * pow(10, 7),
-			value_ev = (value * pow(10, 19))/(1,6) : flag == "erg" ? value_j = value * pow(10, -7),
-			value_erg = value, value_ev = (value * pow(10, 12))/(1,6) : value_j = value * (1,6) * pow(10, -19),
-			value_erg = value * (1,6) * pow(10, -12), value_ev = value;
-
-		return { value_j, value_erg, value_ev };
+		value = value_j;
 	}
 
-	double value, value_j, value_erg, value_ev;
-	std::string flag;
+	void set_erges(double value_erg)
+	{
+		value = value_erg/j_erg;
+	}
+
+	void set_electron_volts(double value_ev)
+	{
+		value = value_ev/j_ev;
+	}
+
+	double get_joules()
+	{
+		return value;
+	}
+
+	double get_erges()
+	{
+		return value*j_erg;
+	}
+
+	double get_electron_volts()
+	{
+		return value*j_ev;
+	}
+
+private:
+	double value;
+	static inline const double j_erg = 10e7;
+	static inline const double j_ev = 10e19 / (1, 6);
 };
 
 
 
 int num1();
 int num2();
-//int num3();
+int num3();
 //int num4();
