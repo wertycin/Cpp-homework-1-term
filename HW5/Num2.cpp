@@ -3,21 +3,38 @@
 int num2()
 {
 	Energy energy;
-	std::vector <double> answer;
+	std::string system;
+	double num;
 
-	std::cout << "Enter your Energy value. If it's Joule, print j after value;" 
-		"erg - print erg; electron - volt - print e-v\n";
-	std::cin >> energy.value;
-	std::cin >> energy.flag;
 
-	answer = energy.convertation();
-	
-	std::cout << "Your answer in Joules, erges, electron-volts: ";
+	std::cout << "Enter your Energy value. If it's Joules, print j after value; " 
+		"ergs - print erg; electron-volts - print ev\n";
+	std::cin >> num; 
+	std::cin >> system;
 
-	for (double el : answer)
+
+	if (system == "j")
 	{
-		std::cout << el << ' ';
+		energy.set_joules(num);
 	}
+	else if (system == "erg")
+	{
+		energy.set_erges(num);
+	}
+	else if (system == "ev")
+	{
+		energy.set_electron_volts(num);
+	}
+	else
+	{
+		std::cerr << "Wrong system";
+		return -1;
+	}
+	
+	std::cout << "Your answer in Joules, erges, electron-volts:\n" <<
+		energy.get_joules() << ' ' << energy.get_erges() << ' ' <<
+		energy.get_electron_volts();
+
 
 	return 0;
 }
