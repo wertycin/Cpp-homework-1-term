@@ -64,8 +64,8 @@ public:
 
 private:
 	double value;
-	static inline const double j_erg = 10e7;
-	static inline const double j_ev = 10e19 / (1, 6);
+	static inline const double j_erg = 1e7;
+	static inline const double j_ev = 1e19 / (1,6);
 };
 
 //num3
